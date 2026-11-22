@@ -42,10 +42,10 @@ Then open http://localhost:4321.
 ## Before launch
 
 - [x] Name: Vinicius Werneck (`site.name` in `js/content.js`, `<title>` in `index.html`)
-- [ ] Domain: register viniciuswerneck.com (it was free on 2026-11-22), then point it at the host
+- [x] Domain: viniciuswerneck.com, live on GitHub Pages with HTTPS enforced
 - [x] About text, email (hi@viniciuswerneck.com) and GitHub profile in `js/content.js`
 - [ ] Email forwarding: add `hi` → your inbox in Namecheap (Domain List → Manage → Redirect Email)
-- [ ] Make github.com/vwvox/mirna public, so Mirna's GitHub buttons work for visitors
+- [x] github.com/vwvox/mirna is public, so Mirna's GitHub buttons work for visitors
 - [x] Placeholder apps left off the live site (they stay in `js/apps/demo-apps.js` for previews)
 - [ ] Favicon (`favicon.svg` is a stand-in)
 - [ ] Optional: self-host the fonts instead of loading them from Google Fonts
