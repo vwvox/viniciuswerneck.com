@@ -5,14 +5,17 @@ import mirna from './apps/mirna.js';
 export const site = {
   // Shown in the top bar and the browser tab. Domain: viniciuswerneck.com
   name: 'Vinicius Werneck',
-  // TODO: the name in the About block ("Hi, I'm …"). Placeholder for now.
-  aboutName: '[your name]',
-  about: 'I make apps for everyday things, one at a time, each with its own personality.',
-  // TODO: contact email. While empty, the About block shows a placeholder.
-  email: '',
-  // TODO: your GitHub profile, e.g. https://github.com/<you>.
+  // The name in the About block ("Hi, I'm …").
+  aboutName: 'Vinicius',
+  // About text, one string per paragraph. Simple HTML (links) is allowed.
+  about: [
+    'Making apps is my hobby. I build them in my spare time, mostly for myself. Mirna is the first one I’m sharing publicly.',
+    'It’s open source and builds on <a href="https://github.com/fastrepl/anarlog">Anarlog</a>, so it exists thanks to people who shared their work first. Mine is here in the same spirit: use it, change it, learn from it.',
+  ],
+  // Forwarded to a personal inbox through Namecheap's email forwarding.
+  email: 'hi@viniciuswerneck.com',
   // Apps without their own repo link point here instead.
-  githubProfile: '',
+  githubProfile: 'https://github.com/vwvox',
 };
 
 // The order here is the order of the cards in the corner fan.

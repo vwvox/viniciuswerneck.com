@@ -56,8 +56,8 @@ export default {
   line: 'Meeting notes on your Mac',
   theme: { bg: '#F5F3EC', ink: '#2E4A3B', header: 'rgba(245, 243, 236, 0.9)' },
   nameFont: 'var(--font-serif)',
-  // TODO: the Mirna repo is private for now. Put its public URL here once it exists.
-  github: '',
+  // Works for visitors once the repo is public.
+  github: 'https://github.com/vwvox/mirna',
   scene,
   cardArt,
 

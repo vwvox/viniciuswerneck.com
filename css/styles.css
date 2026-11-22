@@ -308,6 +308,7 @@ html.is-ready .block.is-on .s5 { transition-delay: .62s; }
 .about-eyebrow { color: #C9CCD3; font-size: 13px; }
 .about-title { margin: 0; font-weight: 800; font-size: clamp(32px, 4vw, 52px); line-height: 1; letter-spacing: -0.03em; }
 .about-text { margin: 0; font-size: 18px; line-height: 1.55; color: #C9CCD3; }
+.about-text a { color: #F5F3EC; text-underline-offset: 3px; }
 .about-links { display: flex; flex-wrap: wrap; gap: 12px; }
 .btn-light { background: #F5F3EC; border-color: #F5F3EC; color: #16181D; }
 .btn-ghost-light { background: transparent; border-color: #F5F3EC; color: #F5F3EC; }
