@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" class="locked">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Vinicius Werneck · Apps</title>
+  <meta name="description" content="Apps made one at a time, each with its own personality.">
+  <meta name="theme-color" content="#F5F3EC">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Fraunces:opsz,wght@9..144,300..700&family=Figtree:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <noscript><style>html.locked, html.locked body { overflow: auto; }</style></noscript>
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <header class="topbar" id="topbar">
+    <a class="brand" id="brand" href="#" data-action="top">Vinicius Werneck</a>
+    <nav class="topnav" aria-label="Main">
+      <button type="button" class="topbtn" data-action="about">About</button>
+      <a class="btn btn-outline btn-small" id="github-top" href="#">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7 3 12l5 5M16 7l5 5-5 5M14 4l-4 16"/></svg>
+        GitHub
+      </a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="hero" aria-label="Apps">
+      <noscript><p class="noscript">This page needs JavaScript to show the apps.</p></noscript>
+      <div class="scenes" id="scenes" aria-hidden="true"></div>
+      <div class="blocks" id="blocks"></div>
+      <div class="fan" id="fan">
+        <button type="button" class="fan-pad" id="fan-pad" tabindex="-1" aria-hidden="true"></button>
+        <button type="button" class="deck" id="deck" aria-expanded="false" aria-controls="fan-cards">
+          <span class="deck-label">
+            All apps
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </button>
+        <div class="fan-cards" id="fan-cards" role="group" aria-label="All apps"></div>
+      </div>
+      <p class="visually-hidden" id="announce" aria-live="polite"></p>
+    </section>
+
+    <section class="details" id="details" aria-label="More about this app"></section>
+  </main>
+
+  <footer class="about" id="about"></footer>
+</body>
+</html>
