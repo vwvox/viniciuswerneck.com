@@ -68,6 +68,12 @@ export default {
       <div class="mistline s s2" aria-hidden="true"><span></span><span></span><span></span></div>
       <p class="mirna-tagline s s3">Every conversation, remembered.</p>
       <p class="hero-sub s s4">Mirna listens to meetings, calls and voice notes, then writes clear notes, all on your own Mac.</p>
+      <ul class="hero-chips s s4" aria-label="Highlights">
+        <li>No meeting bot</li>
+        <li>Runs on your Mac</li>
+        <li>No account</li>
+        <li>Open source</li>
+      </ul>
       <div class="hero-actions s s5">
         <button type="button" class="btn btn-solid" data-action="more">Know more ${icons.arrowDown}</button>
         <a class="btn btn-outline" href="${github}">${icons.code} GitHub</a>
@@ -99,40 +105,77 @@ export default {
     <div class="section details-mirna">
       <div class="wrap stack">
         <div class="intro">
-          <span class="eyebrow">Mirna · in development for macOS</span>
+          <span class="eyebrow">Mirna · calm notes, kept close</span>
           <h2 class="m-h2">Notes from every conversation, without giving them away.</h2>
-          <p class="d-lead">Mirna records a conversation, turns it into a transcript on your Mac and writes clear notes: a summary, the decisions and the next steps. You decide what, if anything, ever touches the cloud.</p>
+          <p class="d-lead">Mirna records a conversation, turns it into a transcript on your Mac and writes structured notes: a summary, the decisions and the next steps. Then you can ask it questions about the meeting. You decide what, if anything, ever touches the cloud.</p>
         </div>
 
-        <div class="grid grid-4">
-          <article class="feature m-feature">
-            ${icons.chats}
-            <h3>Any conversation</h3>
-            <p>Online meetings, a chat across the table, a phone call or a ramble on a walk.</p>
-          </article>
-          <article class="feature m-feature">
-            ${icons.notes}
-            <h3>Notes, written for you</h3>
-            <p>A summary, the decisions and the next steps, ready when the conversation ends.</p>
-          </article>
-          <article class="feature m-feature">
-            ${icons.lock}
-            <h3>Private by default</h3>
-            <p>Recording, transcription and notes all happen on your Mac. Nothing is uploaded unless you say so.</p>
-          </article>
-          <article class="feature m-feature">
-            ${icons.devices}
-            <h3>Phone records, Mac writes</h3>
-            <p>An Android companion records when you're out; your Mac writes the notes and syncs them back.</p>
-            <span class="tag tag-gold">Coming</span>
-          </article>
+        <div class="m-block">
+          <h3 class="m-h3">What it does</h3>
+          <div class="grid grid-4">
+            <article class="feature m-feature">
+              ${icons.chats}
+              <h3>Records any conversation</h3>
+              <p>It captures your microphone and your Mac's own audio, so Zoom, Meet, Teams, WhatsApp or a chat across the table all work the same way.</p>
+            </article>
+            <article class="feature m-feature">
+              ${icons.wave}
+              <h3>Transcribes on your Mac</h3>
+              <p>Speech becomes text on the device, using Whisper. No upload, no waiting on a server.</p>
+            </article>
+            <article class="feature m-feature">
+              ${icons.notes}
+              <h3>Writes the notes with you</h3>
+              <p>Jot a few rough notes during the call. Mirna combines them with the transcript into clear, structured notes.</p>
+            </article>
+            <article class="feature m-feature">
+              ${icons.ask}
+              <h3>Answers questions</h3>
+              <p>Ask what was decided, who owns what, or what you missed, and get answers from that meeting.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="m-block">
+          <h3 class="m-h3">What makes it different</h3>
+          <div class="grid grid-3">
+            <article class="feature m-diff">
+              ${icons.noBot}
+              <h3>No bot joins your call</h3>
+              <p>Nobody sees a recorder appear in the participant list. Mirna listens through your own Mac, like your ears do.</p>
+            </article>
+            <article class="feature m-diff">
+              ${icons.lock}
+              <h3>Nothing leaves your Mac</h3>
+              <p>Audio, transcripts and notes stay on your computer by default. A local model writes the notes through Ollama, LM Studio or Apple Intelligence.</p>
+            </article>
+            <article class="feature m-diff">
+              ${icons.user}
+              <h3>No account, no tracking</h3>
+              <p>No sign-up, no analytics, no crash reports and no update checks. Open it and start recording.</p>
+            </article>
+            <article class="feature m-diff">
+              ${icons.shield}
+              <h3>A locked-down network</h3>
+              <p>The app can only reach your own machine, your local network and AI providers you connect yourself. Everything else is refused.</p>
+            </article>
+            <article class="feature m-diff">
+              ${icons.sliders}
+              <h3>Your choice of AI</h3>
+              <p>Use a free local model, or any cloud provider with your own API key. There's no subscription and no middleman.</p>
+            </article>
+            <article class="feature m-diff">
+              ${icons.code}
+              <h3>Open source</h3>
+              <p>MIT-licensed and public on GitHub, so anyone can check what it does with your conversations.</p>
+            </article>
+          </div>
         </div>
 
         <div class="m-options">
           <div class="intro">
-            <h3 class="m-h3">Choose how private each meeting is</h3>
-            <p class="d-lead">Two switches, cloud notes and cloud transcription. Set a default once, change it for any meeting, and bring your own key for any AI provider.</p>
-            <span class="tag tag-moss">Switches coming soon</span>
+            <h3 class="m-h3">Local by default, cloud only if you choose</h3>
+            <p class="d-lead">Pick where transcripts are made and where notes are written. Today it's one setting for every meeting; a per-meeting switch is next.</p>
           </div>
           <div class="grid grid-3">
             <article class="m-option opt-local">
@@ -167,18 +210,19 @@ export default {
 
         <div class="intro">
           <h3 class="m-h3">Where it's at</h3>
+          <p class="d-lead">An early prototype for Apple Silicon Macs. It works end to end, with rough edges.</p>
           <div class="pills">
-            <span class="pill pill-done">Runs on the Mac · mostly done</span>
+            <span class="pill pill-done">Records, transcribes and writes notes · working</span>
             <span class="pill pill-done">Cloud-free by default · mostly done</span>
-            <span class="pill pill-next">Cloud switches · next</span>
-            <span class="pill pill-later">Android app · planned</span>
+            <span class="pill pill-next">Per-meeting cloud switch · next</span>
+            <span class="pill pill-later">Android companion · planned</span>
             <span class="pill pill-later">Phone and Mac sync · planned</span>
-            <span class="pill pill-later">Notes in Portuguese · planned</span>
+            <span class="pill pill-later">Portuguese, voice notes, speaker names · later</span>
           </div>
         </div>
 
         <div class="d-actions">
-          <a class="btn btn-serra" href="${github}">${icons.code} Mirna on GitHub</a>
+          <a class="btn btn-serra" href="${github}">${icons.code} Build it from source on GitHub</a>
           <button type="button" class="btn btn-outline" data-action="top">Back to top</button>
         </div>
       </div>

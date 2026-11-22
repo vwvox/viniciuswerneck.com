@@ -118,6 +118,8 @@ html.is-ready .block.is-on .s5 { transition-delay: .62s; }
 .mistline span:nth-child(2) { flex: 1; background: #B4532F; }
 .mirna-tagline { margin: 12px 0 0; font-family: var(--font-serif); font-size: clamp(28px, 3.4vw, 44px); line-height: 1.1; color: #2F3431; }
 .mirna-copy .hero-sub { color: #3E4541; }
+.hero-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 2px 0 0; padding: 0; list-style: none; }
+.hero-chips li { padding: 6px 12px; border-radius: 999px; background: #DCE3D6; color: #2E4A3B; font-size: 13px; font-weight: 700; }
 
 .mirna-demo { position: absolute; right: 7%; top: 24%; width: 360px; font-family: var(--font-text); }
 .demo-card { background: #FFFFFF; border-radius: 20px; padding: 18px; box-shadow: 0 30px 60px rgba(46, 74, 59, .2); display: flex; flex-direction: column; gap: 10px; color: #2F3431; }
@@ -275,6 +277,11 @@ html.is-ready .block.is-on .s5 { transition-delay: .62s; }
 .m-feature p { color: #3E4541; }
 .m-feature .icon { width: 26px; height: 26px; stroke-width: 2; }
 .m-options { display: flex; flex-direction: column; gap: 22px; }
+.m-block { display: flex; flex-direction: column; gap: 22px; }
+.m-diff { background: #FFFFFF; border: 1px solid #DCE3D6; }
+.m-diff h3 { font-size: 22px; font-weight: 500; }
+.m-diff p { color: #3E4541; }
+.m-diff .icon { width: 26px; height: 26px; stroke-width: 2; color: #B4532F; }
 .m-option { border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 12px; }
 .m-option h4 { font-size: 24px; font-weight: 500; }
 .m-option p { margin: 0; font-size: 15px; line-height: 1.55; }
