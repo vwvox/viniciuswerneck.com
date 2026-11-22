@@ -69,9 +69,7 @@ button { font: inherit; color: inherit; }
 .btn-solid { background-color: var(--ink); color: var(--bg); border-color: var(--ink); }
 .btn-outline { background: transparent; border-color: currentColor; }
 .btn .icon-arrow-down { animation: nudge-down 1.6s ease-in-out infinite; }
-.btn.is-nudging { animation: nudge .9s var(--ease-spring); }
 @keyframes nudge-down { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
-@keyframes nudge { 0%, 100% { transform: none; } 30% { transform: translateY(7px) scale(1.06); } 60% { transform: translateY(-3px); } }
 
 /* ---------- Hero: scenes and content blocks ---------- */
 .hero { position: relative; height: 100vh; height: 100dvh; min-height: 560px; overflow: hidden; }

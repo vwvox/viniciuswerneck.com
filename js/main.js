@@ -180,15 +180,15 @@ function onScroll() {
   if (!state.unlocked && !state.relockAtTop && window.scrollY > 0) unlock();
 }
 
-// While the page is locked, trying to scroll nudges the "Know more" button.
-let hintTimer = 0;
-function hint() {
-  if (state.unlocked || state.fanOpen) return;
-  const btn = els.blocks.querySelector('.block.is-on [data-action="more"]');
-  if (!btn || btn.classList.contains('is-nudging')) return;
-  btn.classList.add('is-nudging');
-  clearTimeout(hintTimer);
-  hintTimer = setTimeout(() => btn.classList.remove('is-nudging'), 900);
+// While the page is locked, scrolling down does what "Know more" does.
+// For a moment afterwards, wheel input is swallowed so trackpad momentum
+// doesn't fight the smooth scroll down to the details.
+let guardUntil = 0;
+function scrollIntent() {
+  if (state.unlocked || state.fanOpen) return false;
+  guardUntil = Date.now() + 700;
+  reveal(els.details);
+  return true;
 }
 
 function indexFromHash() {
@@ -254,19 +254,36 @@ document.addEventListener('keydown', (e) => {
   if (!state.unlocked && ['ArrowDown', 'PageDown', ' ', 'End'].includes(e.key)) {
     const tag = (e.target.tagName || '').toLowerCase();
     if (['button', 'a', 'input', 'textarea', 'select'].includes(tag)) return;
-    e.preventDefault();
-    hint();
+    if (scrollIntent()) e.preventDefault();
   }
 });
 
-window.addEventListener('wheel', (e) => { if (e.deltaY > 4) hint(); }, { passive: true });
+let wheelSum = 0;
+let wheelReset = 0;
+window.addEventListener('wheel', (e) => {
+  if (Date.now() < guardUntil) {
+    e.preventDefault();
+    return;
+  }
+  // ctrlKey is a trackpad pinch-zoom, not a scroll.
+  if (state.unlocked || state.fanOpen || e.ctrlKey || e.deltaY <= 0) return;
+  // Add up small trackpad deltas so a resting finger doesn't trigger it.
+  wheelSum += e.deltaMode === 0 ? e.deltaY : e.deltaY * 16;
+  clearTimeout(wheelReset);
+  wheelReset = setTimeout(() => { wheelSum = 0; }, 200);
+  if (wheelSum > 24) {
+    wheelSum = 0;
+    e.preventDefault();
+    scrollIntent();
+  }
+}, { passive: false });
 let touchStartY = null;
 window.addEventListener('touchstart', (e) => { touchStartY = e.touches[0] ? e.touches[0].clientY : null; }, { passive: true });
 window.addEventListener('touchmove', (e) => {
   if (touchStartY === null || !e.touches[0]) return;
   if (touchStartY - e.touches[0].clientY > 40) {
-    hint();
     touchStartY = null;
+    scrollIntent();
   }
 }, { passive: true });
 window.addEventListener('scroll', onScroll, { passive: true });
