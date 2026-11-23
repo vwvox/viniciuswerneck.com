@@ -59,7 +59,12 @@ export default {
   // Works for visitors once the repo is public.
   github: 'https://github.com/vwvox/mirna',
   // Download buttons show only while this is set.
-  download: { url: 'https://github.com/vwvox/mirna/releases/latest/download/Mirna-mac-arm64.dmg', note: 'Beta · Apple Silicon · macOS 15 or later' },
+  download: {
+    url: 'https://github.com/vwvox/mirna/releases/latest/download/Mirna-mac-arm64.dmg',
+    note: 'Beta · Apple Silicon · macOS 15 or later',
+    // The APK sits on one fixed release, so new Mac releases don't break this link. Point it at a newer release when the APK is updated.
+    android: { url: 'https://github.com/vwvox/mirna/releases/download/v0.1.0-beta.3/Mirna-android-arm64.apk', note: 'Android 7 or later' },
+  },
   scene,
   cardArt,
 
@@ -78,10 +83,13 @@ export default {
       </ul>
       <div class="hero-actions s s5">
         ${download ? `<a class="btn btn-solid" href="${download.url}" data-track="download-mirna-mac/hero">${icons.download} Download for Mac</a>` : ''}
+        ${download?.android ? `<a class="btn btn-outline" href="${download.android.url}" data-track="download-mirna-android/hero">${icons.download} Android</a>` : ''}
         <button type="button" class="btn ${download ? 'btn-outline' : 'btn-solid'}" data-action="more">Know more ${icons.arrowDown}</button>
-        <a class="btn btn-outline" href="${github}">${icons.code} GitHub</a>
+        ${download?.android
+          ? `<a class="btn btn-outline btn-icon" href="${github}" aria-label="Source on GitHub" title="Source on GitHub">${icons.code}</a>`
+          : `<a class="btn btn-outline" href="${github}">${icons.code} GitHub</a>`}
       </div>
-      ${download ? `<p class="hero-note s s5">${download.note}</p>` : ''}
+      ${download ? `<p class="hero-note s s5">${download.note}${download.android ? ` · Android app: ${download.android.note}` : ''}</p>` : ''}
     </div>
     <div class="mirna-demo s s5 hide-sm" aria-hidden="true">
       <div class="float demo-card">
@@ -216,19 +224,22 @@ export default {
           <h3 class="m-h3">Where it's at</h3>
           <p class="d-lead">${download
             ? 'A public beta for Apple Silicon Macs. It works end to end, with rough edges. The first time you open it, macOS asks you to allow it in System Settings › Privacy & Security, because it isn\'t registered with Apple yet.'
-            : 'An early prototype for Apple Silicon Macs. It works end to end, with rough edges.'}</p>
+            : 'An early prototype for Apple Silicon Macs. It works end to end, with rough edges.'}${download?.android
+            ? ' Mirna for Android records on the go and sends each recording to your Mac over your own network; the Mac sends the notes back. It\'s a direct download (APK), not on the Play Store, so Android asks you to allow installing it.'
+            : ''}</p>
           <div class="pills">
             <span class="pill pill-done">Records, transcribes and writes notes · working</span>
             <span class="pill pill-done">Cloud-free by default · mostly done</span>
+            <span class="pill pill-done">Android companion · working</span>
+            <span class="pill pill-done">Phone and Mac sync · working</span>
             <span class="pill pill-next">Per-meeting cloud switch · next</span>
-            <span class="pill pill-later">Android companion · planned</span>
-            <span class="pill pill-later">Phone and Mac sync · planned</span>
             <span class="pill pill-later">Portuguese, voice notes, speaker names · later</span>
           </div>
         </div>
 
         <div class="d-actions">
           ${download ? `<a class="btn btn-serra" href="${download.url}" data-track="download-mirna-mac/details">${icons.download} Download the beta for Mac</a>` : ''}
+          ${download?.android ? `<a class="btn btn-serra" href="${download.android.url}" data-track="download-mirna-android/details">${icons.download} Download for Android</a>` : ''}
           <a class="btn ${download ? 'btn-outline' : 'btn-serra'}" href="${github}">${icons.code} ${download ? 'Source on GitHub' : 'Build it from source on GitHub'}</a>
           <button type="button" class="btn btn-outline" data-action="top">Back to top</button>
         </div>
