@@ -161,7 +161,7 @@ export default {
             <article class="feature m-diff">
               ${icons.shield}
               <h3>A locked-down network</h3>
-              <p>The app can only reach your own machine, your local network and AI providers you connect yourself. Everything else is refused.</p>
+              <p>Beyond your Mac and your local network, it only goes online to download a model you pick or to reach an AI provider you connect yourself. It never phones home.</p>
             </article>
             <article class="feature m-diff">
               ${icons.sliders}
