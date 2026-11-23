@@ -24,7 +24,7 @@ const els = {
 const state = { cur: 0, fanOpen: false, unlocked: false, relockAtTop: false };
 
 const githubFor = (app) => app.github || site.githubProfile || '#';
-const ctxFor = (app) => ({ icons, site, github: githubFor(app) });
+const ctxFor = (app) => ({ icons, site, github: githubFor(app), download: app.download });
 const scrollBehavior = () => (reducedMotion.matches ? 'auto' : 'smooth');
 
 /* ---------- Rendering ---------- */

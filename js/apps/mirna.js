@@ -58,10 +58,12 @@ export default {
   nameFont: 'var(--font-serif)',
   // Works for visitors once the repo is public.
   github: 'https://github.com/vwvox/mirna',
+  // Download buttons show only while this is set.
+  download: { url: 'https://github.com/vwvox/mirna/releases/latest/download/Mirna-mac-arm64.dmg', note: 'Beta · Apple Silicon · macOS 15 or later' },
   scene,
   cardArt,
 
-  hero: ({ icons, github }) => `
+  hero: ({ icons, github, download }) => `
     <div class="hero-copy mirna-copy">
       <span class="eyebrow s s1">No. 01 · Meeting notes</span>
       <h1 class="mirna-wordmark s s2">${wordmark}</h1>
@@ -75,9 +77,11 @@ export default {
         <li>Open source</li>
       </ul>
       <div class="hero-actions s s5">
-        <button type="button" class="btn btn-solid" data-action="more">Know more ${icons.arrowDown}</button>
+        ${download ? `<a class="btn btn-solid" href="${download.url}">${icons.download} Download for Mac</a>` : ''}
+        <button type="button" class="btn ${download ? 'btn-outline' : 'btn-solid'}" data-action="more">Know more ${icons.arrowDown}</button>
         <a class="btn btn-outline" href="${github}">${icons.code} GitHub</a>
       </div>
+      ${download ? `<p class="hero-note s s5">${download.note}</p>` : ''}
     </div>
     <div class="mirna-demo s s5 hide-sm" aria-hidden="true">
       <div class="float demo-card">
@@ -101,7 +105,7 @@ export default {
       </div>
     </div>`,
 
-  details: ({ icons, github }) => `
+  details: ({ icons, github, download }) => `
     <div class="section details-mirna">
       <div class="wrap stack">
         <div class="intro">
@@ -210,7 +214,9 @@ export default {
 
         <div class="intro">
           <h3 class="m-h3">Where it's at</h3>
-          <p class="d-lead">An early prototype for Apple Silicon Macs. It works end to end, with rough edges.</p>
+          <p class="d-lead">${download
+            ? 'A public beta for Apple Silicon Macs. It works end to end, with rough edges. The first time you open it, macOS asks you to allow it in System Settings › Privacy & Security, because it isn\'t registered with Apple yet.'
+            : 'An early prototype for Apple Silicon Macs. It works end to end, with rough edges.'}</p>
           <div class="pills">
             <span class="pill pill-done">Records, transcribes and writes notes · working</span>
             <span class="pill pill-done">Cloud-free by default · mostly done</span>
@@ -222,7 +228,8 @@ export default {
         </div>
 
         <div class="d-actions">
-          <a class="btn btn-serra" href="${github}">${icons.code} Build it from source on GitHub</a>
+          ${download ? `<a class="btn btn-serra" href="${download.url}">${icons.download} Download the beta for Mac</a>` : ''}
+          <a class="btn ${download ? 'btn-outline' : 'btn-serra'}" href="${github}">${icons.code} ${download ? 'Source on GitHub' : 'Build it from source on GitHub'}</a>
           <button type="button" class="btn btn-outline" data-action="top">Back to top</button>
         </div>
       </div>
