@@ -77,7 +77,7 @@ export default {
         <li>Open source</li>
       </ul>
       <div class="hero-actions s s5">
-        ${download ? `<a class="btn btn-solid" href="${download.url}">${icons.download} Download for Mac</a>` : ''}
+        ${download ? `<a class="btn btn-solid" href="${download.url}" data-track="download-mirna-mac/hero">${icons.download} Download for Mac</a>` : ''}
         <button type="button" class="btn ${download ? 'btn-outline' : 'btn-solid'}" data-action="more">Know more ${icons.arrowDown}</button>
         <a class="btn btn-outline" href="${github}">${icons.code} GitHub</a>
       </div>
@@ -228,7 +228,7 @@ export default {
         </div>
 
         <div class="d-actions">
-          ${download ? `<a class="btn btn-serra" href="${download.url}">${icons.download} Download the beta for Mac</a>` : ''}
+          ${download ? `<a class="btn btn-serra" href="${download.url}" data-track="download-mirna-mac/details">${icons.download} Download the beta for Mac</a>` : ''}
           <a class="btn ${download ? 'btn-outline' : 'btn-serra'}" href="${github}">${icons.code} ${download ? 'Source on GitHub' : 'Build it from source on GitHub'}</a>
           <button type="button" class="btn btn-outline" data-action="top">Back to top</button>
         </div>

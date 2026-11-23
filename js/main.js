@@ -231,6 +231,9 @@ els.cards.addEventListener('click', (e) => {
 });
 
 document.addEventListener('click', (e) => {
+  // Links marked data-track (the download buttons) count as GoatCounter events.
+  const tracked = e.target.closest('[data-track]');
+  if (tracked) window.goatcounter?.count?.({ path: tracked.dataset.track, title: tracked.textContent.trim(), event: true });
   const target = e.target.closest('[data-action]');
   if (!target) return;
   const action = target.dataset.action;
