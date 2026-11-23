@@ -51,6 +51,7 @@ function aboutHtml() {
         <span class="eyebrow about-eyebrow">About</span>
         <p class="about-title">Hi, I'm ${site.aboutName || site.name}.</p>
         ${[].concat(site.about).map((p) => `<p class="about-text">${p}</p>`).join('')}
+        ${site.note ? `<p class="about-note">${site.note}</p>` : ''}
       </div>
       <div class="about-links">
         ${email}
