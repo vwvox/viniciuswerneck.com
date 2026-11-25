@@ -17,4 +17,6 @@ export const icons = {
   shield: svg('<path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6Z"/><path d="M8.5 12l2.5 2.5 4.5-5"/>'),
   sliders: svg('<path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/>'),
   devices: svg('<rect x="2" y="5" width="7" height="14" rx="1.5"/><rect x="12" y="6" width="10" height="8" rx="1"/><path d="M10.5 18H23"/>'),
+  voices: svg('<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17" cy="8.5" r="2.8"/><path d="M17 14c2.7.1 4.5 2.2 4.5 5.2"/>'),
+  phone: svg('<rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3"/>'),
 };

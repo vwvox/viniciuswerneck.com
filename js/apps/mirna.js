@@ -77,7 +77,7 @@ export default {
       <p class="hero-sub s s4">Mirna listens to meetings, calls and voice notes, then writes clear notes, all on your own Mac.</p>
       <ul class="hero-chips s s4" aria-label="Highlights">
         <li>No meeting bot</li>
-        <li>Runs on your Mac</li>
+        <li>Nothing leaves your Mac</li>
         <li>No account</li>
         <li>Open source</li>
       </ul>
@@ -119,12 +119,21 @@ export default {
         <div class="intro">
           <span class="eyebrow">Mirna · calm notes, kept close</span>
           <h2 class="m-h2">Notes from every conversation, without giving them away.</h2>
-          <p class="d-lead">Mirna records a conversation, turns it into a transcript on your Mac and writes structured notes: a summary, the decisions and the next steps. Then you can ask it questions about the meeting. You decide what, if anything, ever touches the cloud.</p>
+          <p class="d-lead">Mirna records a conversation, turns it into a transcript on your Mac and writes structured notes: a summary, the decisions and the next steps. Then you can ask it questions about that meeting, or about any past one. You decide what, if anything, ever touches the cloud.</p>
         </div>
+
+        <figure class="m-video">
+          <video data-autoplay muted loop playsinline controls preload="none" width="1920" height="1080"
+            poster="assets/mirna/mirna-demo-poster.jpg"
+            aria-label="A 35-second demo: recording a made-up roadmap call, the transcript made on the Mac, the notes written, and a question answered, all without anything leaving the Mac.">
+            <source src="assets/mirna/mirna-demo.mp4" type="video/mp4">
+          </video>
+          <figcaption>35 seconds, from hitting record to asking what you missed. The meeting is made up.</figcaption>
+        </figure>
 
         <div class="m-block">
           <h3 class="m-h3">What it does</h3>
-          <div class="grid grid-4">
+          <div class="grid grid-3">
             <article class="feature m-feature">
               ${icons.chats}
               <h3>Records any conversation</h3>
@@ -132,8 +141,13 @@ export default {
             </article>
             <article class="feature m-feature">
               ${icons.wave}
-              <h3>Transcribes on your Mac</h3>
-              <p>Speech becomes text on the device, using Whisper. No upload, no waiting on a server.</p>
+              <h3>Transcribes in your language</h3>
+              <p>Speech becomes text on your Mac. Mirna spots the language and picks a model for it: Parakeet for 25 European languages, Qwen3-ASR for others like Mandarin, with pinyin if you want it.</p>
+            </article>
+            <article class="feature m-feature">
+              ${icons.voices}
+              <h3>Knows who said what</h3>
+              <p>It tells the voices apart, even people sharing one mic in the room, and lets you name them. It also removes your speakers' echo, so nothing is transcribed twice.</p>
             </article>
             <article class="feature m-feature">
               ${icons.notes}
@@ -143,8 +157,34 @@ export default {
             <article class="feature m-feature">
               ${icons.ask}
               <h3>Answers questions</h3>
-              <p>Ask what was decided, who owns what, or what you missed, and get answers from that meeting.</p>
+              <p>Ask what was decided, who owns what, or what you missed, in that meeting or in any past one.</p>
             </article>
+            <article class="feature m-feature">
+              ${icons.phone}
+              <h3>Records on your phone too</h3>
+              <p>Mirna for Android records on the go, right from your lock screen. The audio goes to your Mac, encrypted, over your own Wi-Fi, and the notes come back to your phone.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="m-block">
+          <h3 class="m-h3">A closer look</h3>
+          <div class="grid grid-3 m-shots">
+            <figure>
+              <img src="assets/mirna/mirna-chinese-lesson.png" width="1024" height="849" loading="lazy" decoding="async"
+                alt="A Mirna transcript of a Chinese lesson, transcribed on the Mac by the Qwen3-ASR model, with pinyin shown above each Chinese character.">
+              <figcaption>A Mandarin lesson, with pinyin over the characters.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/mirna/mirna-past-meetings.png" width="1024" height="945" loading="lazy" decoding="async"
+                alt="Mirna's chat answering two questions about past meetings, each answer linked to the note it came from.">
+              <figcaption>Questions about any past meeting, answered from your own notes.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/mirna/mirna-android.png" width="857" height="835" loading="lazy" decoding="async"
+                alt="Two Android phones: one recording a lunch meeting from the lock screen, the other showing the finished notes that came back from the Mac.">
+              <figcaption>Record on your phone; the notes come back from your Mac.</figcaption>
+            </figure>
           </div>
         </div>
 
@@ -229,11 +269,12 @@ export default {
             : ''}</p>
           <div class="pills">
             <span class="pill pill-done">Records, transcribes and writes notes · working</span>
-            <span class="pill pill-done">Cloud-free by default · mostly done</span>
+            <span class="pill pill-done">Cloud-free by default · working</span>
+            <span class="pill pill-done">Mandarin and 25 European languages · working</span>
+            <span class="pill pill-done">Speaker names and voice separation · working</span>
             <span class="pill pill-done">Android companion · working</span>
             <span class="pill pill-done">Phone and Mac sync · working</span>
             <span class="pill pill-next">Per-meeting cloud switch · next</span>
-            <span class="pill pill-later">Portuguese, voice notes, speaker names · later</span>
           </div>
         </div>
 

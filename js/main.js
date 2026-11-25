@@ -129,6 +129,7 @@ function show(i, { initial = false } = {}) {
     el.setAttribute('aria-current', k === i ? 'true' : 'false');
   });
   els.details.innerHTML = app.details(ctxFor(app));
+  watchVideos(els.details);
   els.githubTop.href = githubFor(app);
   if (initial) return;
   els.announce.textContent = `Now showing ${app.name}`;
@@ -137,6 +138,25 @@ function show(i, { initial = false } = {}) {
     window.scrollTo(0, 0);
     lock();
   }
+}
+
+/* ---------- Videos: muted, and only playing while on screen ---------- */
+
+// Videos marked data-autoplay play while at least half on screen and pause when they leave.
+// Visitors who ask for reduced motion get the poster and the controls instead.
+let videoWatcher = null;
+function watchVideos(container) {
+  videoWatcher?.disconnect();
+  videoWatcher = null;
+  const videos = container.querySelectorAll('video[data-autoplay]');
+  if (!videos.length || reducedMotion.matches || !('IntersectionObserver' in window)) return;
+  videoWatcher = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) entry.target.play().catch(() => {});
+      else entry.target.pause();
+    }
+  }, { threshold: 0.5 });
+  videos.forEach((v) => videoWatcher.observe(v));
 }
 
 /* ---------- Scroll lock: the page only scrolls after "Know more" ---------- */
@@ -182,12 +202,16 @@ function onScroll() {
 }
 
 // While the page is locked, scrolling down does what "Know more" does.
-// For a moment afterwards, wheel input is swallowed so trackpad momentum
-// doesn't fight the smooth scroll down to the details.
-let guardUntil = 0;
+// A trackpad keeps sending momentum for a second or two after the swipe. Swallow
+// it until it dies down (a short gap between wheel events), so it can neither
+// fight the smooth scroll down to the details nor push the page past them once
+// it lands. The cap keeps a long, deliberate scroll from being blocked for good.
+const MOMENTUM_GAP = 150;
+const MOMENTUM_CAP = 3000;
+let guard = null;
 function scrollIntent() {
   if (state.unlocked || state.fanOpen) return false;
-  guardUntil = Date.now() + 700;
+  guard = { start: Date.now(), last: Date.now() };
   reveal(els.details);
   return true;
 }
@@ -265,9 +289,15 @@ document.addEventListener('keydown', (e) => {
 let wheelSum = 0;
 let wheelReset = 0;
 window.addEventListener('wheel', (e) => {
-  if (Date.now() < guardUntil) {
-    e.preventDefault();
-    return;
+  if (guard) {
+    const now = Date.now();
+    const stillMoving = now - guard.last < MOMENTUM_GAP;
+    guard.last = now;
+    if (stillMoving && now - guard.start < MOMENTUM_CAP) {
+      e.preventDefault();
+      return;
+    }
+    guard = null;
   }
   // ctrlKey is a trackpad pinch-zoom, not a scroll.
   if (state.unlocked || state.fanOpen || e.ctrlKey || e.deltaY <= 0) return;

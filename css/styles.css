@@ -18,6 +18,8 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; }
+/* Keep room for a classic scrollbar even while the page is locked, so unlocking doesn't shift everything sideways. */
+html { scrollbar-gutter: stable; }
 html.locked, html.locked body { overflow: hidden; }
 
 body {
@@ -278,6 +280,11 @@ html.is-ready .block.is-on .s5 { transition-delay: .62s; }
 .m-feature .icon { width: 26px; height: 26px; stroke-width: 2; }
 .m-options { display: flex; flex-direction: column; gap: 22px; }
 .m-block { display: flex; flex-direction: column; gap: 22px; }
+.m-video { margin: 0; display: flex; flex-direction: column; gap: 12px; }
+.m-video video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 22px; background: #E9E6DC; box-shadow: 0 24px 60px rgba(46, 74, 59, .16), 0 0 0 1px #DCE3D6; }
+.m-video figcaption, .m-shots figcaption { font-size: 14px; color: #5D635F; }
+.m-shots figure { margin: 0; display: flex; flex-direction: column; gap: 12px; }
+.m-shots img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: contain; border-radius: 22px; background: #ECEAE1; padding: 14px; box-sizing: border-box; }
 .m-diff { background: #FFFFFF; border: 1px solid #DCE3D6; }
 .m-diff h3 { font-size: 22px; font-weight: 500; }
 .m-diff p { color: #3E4541; }
