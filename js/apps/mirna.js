@@ -63,7 +63,7 @@ export default {
     url: 'https://github.com/vwvox/mirna/releases/latest/download/Mirna-mac-arm64.dmg',
     note: 'Beta · Apple Silicon · macOS 15 or later',
     // The APK sits on one fixed release, so new Mac releases don't break this link. Point it at a newer release when the APK is updated.
-    android: { url: 'https://github.com/vwvox/mirna/releases/download/v0.1.0-beta.3/Mirna-android-arm64.apk', note: 'Android 7 or later' },
+    android: { url: 'https://github.com/vwvox/mirna/releases/download/v0.1.0-beta.4/Mirna-android-arm64.apk', note: 'Android 7 or later' },
   },
   scene,
   cardArt,
